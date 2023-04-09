@@ -1,5 +1,5 @@
-//go:build !v2
-// +build !v2
+//go:build v1
+// +build v1
 
 package main
 

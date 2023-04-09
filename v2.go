@@ -51,7 +51,7 @@ func setupRouter() *gin.Engine {
 		c.JSON(200, products[id])
 	})
 
-	r.GET("/product", func(c *gin.Context) {
+	r.GET("/detail", func(c *gin.Context) {
 		productID := c.Query("productId")
 		if productID == "" {
 			c.JSON(400, gin.H{
