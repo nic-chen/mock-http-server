@@ -10,22 +10,14 @@ import (
 )
 
 type Product struct {
-	ProductID   int    `json:"productId"`
-	ProductName string `json:"productName"`
+	ProductNumber      int    `json:"productNumber"`
+	ProductDescription string `json:"productDescription"`
 }
 
 var products = map[int]Product{
 	1: {
-		ProductID:   1,
-		ProductName: "Apple",
-	},
-	2: {
-		ProductID:   2,
-		ProductName: "Huawei",
-	},
-	3: {
-		ProductID:   3,
-		ProductName: "Samsung",
+		ProductNumber:      1,
+		ProductDescription: "Orange",
 	},
 }
 
@@ -33,17 +25,18 @@ func setupRouter() *gin.Engine {
 	r := gin.Default()
 
 	r.GET("/product", func(c *gin.Context) {
-		productID := c.Query("productId")
-		if productID == "" {
+		productNumber := c.Query("productNumber")
+		if productNumber == "" {
 			c.JSON(400, gin.H{
-				"message": "productId is required",
+				"message": "productNumber is required",
 			})
 			return
 		}
-		id, err := strconv.Atoi(productID)
+
+		id, err := strconv.Atoi(productNumber)
 		if err != nil {
 			c.JSON(400, gin.H{
-				"message": "invalid productId",
+				"message": "invalid productNumber",
 			})
 			return
 		}
@@ -52,17 +45,18 @@ func setupRouter() *gin.Engine {
 	})
 
 	r.GET("/detail", func(c *gin.Context) {
-		productID := c.Query("productId")
-		if productID == "" {
+		productNumber := c.Query("productNumber")
+		if productNumber == "" {
 			c.JSON(400, gin.H{
-				"message": "productId is required",
+				"message": "productNumber is required",
 			})
 			return
 		}
-		id, err := strconv.Atoi(productID)
+
+		id, err := strconv.Atoi(productNumber)
 		if err != nil {
 			c.JSON(400, gin.H{
-				"message": "invalid productId",
+				"message": "invalid productNumber",
 			})
 			return
 		}
