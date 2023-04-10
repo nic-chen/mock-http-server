@@ -2,7 +2,7 @@ package main
 
 func main() {
 	r := setupRouter()
-	err := r.Run(":8080")
+	err := r.Run()
 	if err != nil {
 		panic(err)
 	}
